@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package readwritebe;
+package readwritebe.GUI.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import readwritebe.BE.Prisoner;
+import readwritebe.BLL.BLController;
 
 /**
  *
@@ -20,19 +23,22 @@ public class AppController implements Initializable
 {
     
     @FXML
-    private Label label;
-    
+    private Button button;
     @FXML
-    private void handleButtonAction(ActionEvent event)
-    {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private ListView<Prisoner> lstPrisoners;
+    
+    private BLController blc;
+            
+    @FXML
+    private void handleButtonAction(ActionEvent event) 
+    {        
+        lstPrisoners.getItems().addAll(blc.prepareData());
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        blc = new BLController();
     }    
     
 }
